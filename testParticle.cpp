@@ -46,6 +46,20 @@ void run_tests() {
 	assert(p1.get_lifetime() == 95);
 	assert(p1.get_type() == ParticleType::STREAMER);
 	cout << "All setter tests passed." << endl;
+	
+	// This is testing the stub drawParticle() method;-KD
+
+	p1.drawParticle();
+	cout << "All stub drawParticle method tests passed." << endl;
+
+	// This is testing the physics() method;-KD
+	p1.set_x(9.5);
+	p1.set_y(15.5);
+	p1.set_dx(4.7);
+	p1.set_dy(-6.7);
+	p1.set_lifetime(75);
+	p1.physics();
+	cout << "All stub physics method tests passed." << endl;
 
 	cout << "Good job, all your Particle Tests passed!" << endl;
 }
