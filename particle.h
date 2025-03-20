@@ -64,8 +64,12 @@ class Particle {
 
 		// My stub methods are below;-KD
 
-		void drawParticle() const; // This draws the particles on the screen;-KD
-		void physics() const;
+		void drawParticle() const { // This draws the particles on the screen;-KD
+			std::cout << "The current particle location is: " << "(" << x << "," << y << ")" << std::endl;	
+		}
+		void physics() const {
+			std::cout << "The updated particle location is: " << "(" << x << "," << y << ")" << std::endl;	
+		}
 };
 
 #endif
