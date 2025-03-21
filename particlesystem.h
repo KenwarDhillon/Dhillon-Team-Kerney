@@ -3,6 +3,7 @@
 #include <iostream>
 #include "particle.h"
 #include "cell.h"
+#include "/public/colors.h"
 class ParticleSystem{
 	// Head and Tail Pointers-FM
 	Cell  *head = nullptr;
@@ -10,10 +11,18 @@ class ParticleSystem{
 	// Size-FM
 	int size = 0;
    public:
+	// Added screenSize function & stub - Mar 20 7:50 PM
+	void screenSize() {
+		const  auto [rows,cols] = get_terminal_size();
+		
+		std::cout << "rows " << rows << std::endl;
+		std::cout << "cols " << cols << std::endl;
+	
+	}
     // Destructor-FM
 	~ParticleSystem() {
 		Cell  *current = head;
-		while(current->get_next() != nullptr) {
+		while(current) {
 		Cell *temp = current;
 		current = current->get_next();
 		delete temp;
@@ -26,7 +35,7 @@ class ParticleSystem{
 	if ( size == 0) {
 		head = temp; 
 		tail = temp;
-	}
+	} else {
    	temp->set_prev(tail);
 	if (tail) {
 	tail->set_next(temp);
@@ -34,7 +43,7 @@ class ParticleSystem{
 	} else {
 		head = temp;
 		tail = temp;
-	} 
+	} }
 	size++;
 	};
 	int numParticle(){
