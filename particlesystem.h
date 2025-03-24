@@ -14,7 +14,8 @@ class ParticleSystem{
 	// Added screenSize function & stub - Mar 20 7:50 PM
 	void screenSize() {
 		const  auto [rows,cols] = get_terminal_size();
-		
+		//int rows = rows;
+		//int cols = cols;
 		std::cout << "rows " << rows << std::endl;
 		std::cout << "cols " << cols << std::endl;
 	
@@ -51,11 +52,17 @@ class ParticleSystem{
 	return 1;
 	};
 	void drawParticles(){
-		//Stub drawParticles 
-		std::cout << "Calling drawParticles method" <<std:: endl;
+		// Added loop that iteration throught loops for Project Milestone #2-FM
+		for (Cell* temp = head; temp; temp = temp->get_next()) {
+			temp->get_particle().drawParticle();	
+		}
 	};
-	int moveParticles(){
-		return 1; 
+	void  moveParticles(){
+		// Added loop that iteration throught loops for Project Milestone #2-FM
+		for (Cell* temp = head; temp; temp = temp->get_next()) {	
+			temp->get_particle().physics();	
+		}
+		//return 1; 
 	};
 	// Get size function-FM 
 	int get_Size() {
