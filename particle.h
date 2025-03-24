@@ -22,7 +22,7 @@ class Particle {
 			dx = 0.0;
 			dy = 0.0;
 			lifetime = 0;
-			type = ParticleType::BALLISTIC;
+			type = ParticleType::STREAMER;
 		}
 
 		Particle(double new_x, double new_y, double new_dx, double new_dy, int new_lifetime, ParticleType new_type) : x(new_x), y(new_y), dx(new_dx), dy(new_dy), lifetime(new_lifetime), type(new_type) {} // Paramterized constructor;-KD
@@ -64,12 +64,12 @@ class Particle {
 
 		// My stub methods are below;-KD
 
-		void drawParticle() const { // This draws the particles on the screen;-KD
+		// (Note: I commented out the drawParticle() method declaration because I am not supposed to be doing it;-KD)
+
+		/* void drawParticle() const { // This draws the particles on the screen;-KD
 			std::cout << "The current particle location is: " << "(" << x << "," << y << ")" << std::endl;	
-		}
-		void physics() const {
-			std::cout << "The updated particle location is: " << "(" << x << "," << y << ")" << std::endl;	
-		}
+		} */
+		void physics();
 };
 
 #endif

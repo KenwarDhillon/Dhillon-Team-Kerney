@@ -7,19 +7,20 @@ void Particle::physics() {
 	y = y + dy;
 
 	if (type == ParticleType::BALLISTIC) {
-		dy = dy - 2.0;
+		dy = dy + 1.0;
 	}
 	else if (type == ParticleType::FIREWORK) {
 		if (lifetime <= 0) {
-			cout << "Firework exploded at the spot: " << x << "," << y << ")" << endl;
+			cout << "💥 Firework exploded at the spot: " << x << "," << y << ") 💥" << endl;
 		}
+		// (Note: I think that the actual particle explosion code has to be done in particlesystems;-KD)
 	}
 
 	lifetime--;
 }
 
-int main() {
-	cout << "Hello World. Testing git push.-KD" << endl;
+// int main() {
+	// cout << "Hello World. Testing git push.-KD" << endl;
 
-	return 0;
-}
+	// return 0;
+// }
