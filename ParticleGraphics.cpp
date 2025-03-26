@@ -7,7 +7,7 @@
 
 using namespace std;
 
-  void ParticleGraphics::drawPoint(double x, double y, int r, int b, int g) const{ 		//draws single point at specified coordinates given in the paramter - RC
+  void ParticleGraphics::drawParticle(double x, double y, int r, int b, int g) const{ 		//draws single point at specified coordinates given in the paramter - RC
 	resetcolor();																									//params take x&y of first corner and x&y of second corner
 	setbgcolor(r,b, g);																			//int r = red int b = blue int g = green allows to set color
 	movecursor(y,x);
