@@ -10,21 +10,41 @@ class ParticleSystem{
 	Cell *tail = nullptr;
 	// Size-FM
 	int size = 0;
+//	int ROWS = 0;
+//	int COLS = 0;
+   // [auto [rows,cols] =  get_terminal_size()];
    public:
+	int ROWS = 0;
+	int COLS = 0;
+	ParticleSystem();
+	~ParticleSystem();
+	void add(int amount);
+	void pop_back();
+	void drawParticles();
+	void moveParticles();
+	int get_Size();
+};
+    //auto [rows,cols] =  get_terminal_size();
+	//rows--;
+//	cols--;
+	//  ROWS = rows;
+//	COLS = COLS;
+	// Top left (0,0) Top Right (0, Cols)
+	// Bottom Left ( Rows,0) Bottom Right ( Rows Cols)
 	// Added screenSize function & stub - Mar 20 7:50 PM
-	void screenSize() {
-		const  auto [rows,cols] = get_terminal_size();
+	
 		//int rows = rows;
 		//int cols = cols;
-		std::cout << "rows " << rows << std::endl;
-		std::cout << "cols " << cols << std::endl;
+		
+		//std::cout << "rows " << rows << std::endl;
+		//std::cout << "cols " << cols << std::endl;
 	
-	}
+/*
     // Destructor-FM
 	~ParticleSystem() {
-		Cell  *current = head;
-		while(current) {
-		Cell *temp = current;
+	//	Cell  *current = head;
+	//	while(current) {
+	//	Cell *temp = current;
 		current = current->get_next();
 		delete temp;
 		}
@@ -47,6 +67,12 @@ class ParticleSystem{
 	} }
 	size++;
 	};
+	void pop_back() {
+		//Cell* temp = tail; 
+		tail->set_prev() = nullptr; 
+		delete tail;
+		size--;
+	}
 	int numParticle(){
 	// Stub numParticle 
 	return 1;
@@ -69,6 +95,6 @@ class ParticleSystem{
 		return size; 
 	};
 
-};
+};*/
 #endif
 
