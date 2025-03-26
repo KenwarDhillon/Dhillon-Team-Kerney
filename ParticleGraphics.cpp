@@ -11,7 +11,7 @@ using namespace std;
 	resetcolor();																									//params take x&y of first corner and x&y of second corner
 	setbgcolor(r,b, g);																			//int r = red int b = blue int g = green allows to set color
 	movecursor(y,x);
-    cout << "*";
+    cout << " ";
     cout.flush();
 	resetcolor();
       }
@@ -25,7 +25,7 @@ using namespace std;
           resetcolor();																									//params take x&y of first corner and x&y of second corner
       setbgcolor(r,b, g);
  movecursor(y1, x1);
-          cout << "*";
+          cout << " ";
           cout.flush();
 		resetcolor();
           if (x1==x2 and y1==y2) break;
