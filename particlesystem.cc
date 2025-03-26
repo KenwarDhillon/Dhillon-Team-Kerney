@@ -74,14 +74,52 @@ void ParticleSystem::drawParticles() {
 }
 
 void ParticleSystem::moveParticles() {
-	for (Cell* temp = head; temp; temp = temp->get_next()) {
+	for (Cell* temp = head; temp; temp = temp->get_next()) { // (Note: This part of the code should be correct;-KD)
 	temp->get_particle()->physics();
 // Cou;ldn't get out of bounds system to work yet 
 	}
 
-	Particle* p = tail->get_particle();
+	// IMPORTANT: NOTE: I commented out this section of Fabian's code;-KD)
+	/* Particle* p = tail->get_particle();
 	if ( p->get_x() < 0 || p->get_x() >= COLS || p->get_y() < 0 || p->get_y() >= ROWS || p->get_lifetime()) {
 	pop_back();
+	} */
+
+	// Cull particles and handle FIREWORKS is below;-KD
+	Cell* current = head;
+	while (current) {
+		Cell* next = current->get_next();
+		Particle* p = current->get_particle();
+
+		// We handle the FIREWORK explosion here;-KD
+		if (p->get_type() == Particle::FIREWORK && p->get_lifetime() <= 0) {
+			double x = p->get_x();
+			double y = p->get_y();
+
+			for (int i = 0; i < 8; ++i) {
+				double angle = i * (3.14159 * 2 / 8);
+				double dx = cos(angle);
+				double dy = sin(angle);
+
+				Particle* newP = new Particle(x, y, dx, dy, 20, ParticleType::STREAMER);
+				Cell* newCell = new Cell(nullptr, tail, newP);
+				if (tail) tail->set_next_(newCell);
+				else head = newCell;
+				size++;
+			}
+		}
+		// We handle culling particles here;-KD
+		bool outOfBounds = p->get(x) < 0 || p->get_x() >= COLS || p->get_y() < 0 || p->get_y() >= ROWS;
+		if (outOfBounds || p->get_lifetime() <= 0) {
+			if (current == head) head = current->get_next();
+			if (current == tail) tail = current->get_prev();
+			if (current->get_prev()) current->get_prev()->set_next(current->get_next());
+			if (current->get_next()) current->get_next()->set_prev(current->get_prev());
+			delete p;
+			delete current;
+			size--;
+		}
+		current = next;
 	}
 
 }
